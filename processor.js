@@ -19,7 +19,6 @@ class OrderProcessor extends events{
 
         orderData.lineItems.forEach(item => {
             let stock = stockList[item.id];
-            consol
             if(stock < item.quantity){
                 this.emit('PROCESSING_FAILED', {
                     orderNumber: orderData.orderNumber,
