@@ -18,11 +18,10 @@ class OrderProcessor extends events{
         }
 
         orderData.lineItems.forEach(item => {
-            let stock = stockList[item.id];
-            if(stock < item.quantity){
+            if( stockList[item.itemId].stock < item.quantity){
                 this.emit('PROCESSING_FAILED', {
                     orderNumber: orderData.orderNumber,
-                    itemId: item.id,
+                    itemId: item.itemId,
                     reason: 'INSUFFICIENT_STOCK'
                 });
 
